@@ -1,0 +1,25 @@
+Computer Vision Task
+
+---->This project was done as a part of a set of projects given by the AI and ML club of IIT Ropar.
+
+
+Considering the fact that this was my first Machine Learning project, I first looked up online for codes for similar tasks. Another helping factor was
+Tensorflow.org’s guide on working on the MNIST dataset using Keras api for Tensorflow which I finally decided to use for writing my code.
+The next step was to figure out a way to extract the training and testing set images for further processing.Fortunately Keras has the
+ImageDataGenerator class for the same purpose.It also enabled me to perform image augmentation on the training data.
+Following this was the creation of a model to train the neural network. For this purpose I used two Conv2D layers, each one followed with a
+maxpooling2D layer. 
+Then a dense layer with relu activation and then a final dense layer with softmax activation giving an output of shape (None,5)
+representing the probability values for the 5 classes.
+I tried experimenting with adding a dropout layer after the convolutional layers but it had no impact on training accuracy, so it was left out.
+Then the model was configured for training using model.compile() function from the tf.keras.model class. The loss type used was
+categorical_crossentropy loss,because this was a multiclass classification task, and the rmsprop optimiser was used with the metric parameter being
+accuracy.
+The model was then finally trained and the final validation accuracy after 30 epochs was around 79% with the training accuracy being 71%.(This was of course obtained after experimenting around with different parameters).
+Finally the predictions on the test set were made using model.predict_generator() function and stored in a csv file.
+
+Download the-
+
+a)Training dataset-https://drive.google.com/file/d/137KydXD3ARd0fJd7PZxcNAt3mFROe66Y/view?usp=sharing
+
+b)Test dataset-https://drive.google.com/file/d/137KydXD3ARd0fJd7PZxcNAt3mFROe66Y/view?usp=sharing
